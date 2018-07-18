@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+{% block title %}Book Details{% endblock %}
+{% block body %}
+    <div class="container">
+    <div class="row bootstrap snippets">
+    <div class="col-md-9 col-md-offset-2 col-sm-12">
+        <div class="comment-wrapper">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Book
+                </div>
+                <div class="panel-body">
+
+                  <div class="row">
+
+                    <div class="col-xs-9 col-md-5 col-md-offset-1 section-box">
+                        <h2>{{ book.title }} by {{ book.author}}</h2>
+                        <p>ISBN :{{ book.isbn }}</p>
+                        <hr />
+                        <div class="row rating-desc">
+                            <div class="col-md-12">
+                                Published On {{ book.yearvalue}}
+                            </div>
+                        </div>
+
+                      </div>
+                     <div class="col-xs-12 col-md-6 text-center">
+                         <h2>Reviews from Good reads</h2>
+                        <h3 class="rating-num">Average Rating({{ rating["books"][0]["average_rating"] }})</h3>
+                        <div class="rating">
+                            <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                            </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                            </span><span class="glyphicon glyphicon-star-empty"></span>
+                        </div>
+                        <div>
+                            <span class="glyphicon glyphicon-user"></span>({{ rating["books"][0]["ratings_count"] }}) Number of Reviews
+                        </div>
+                    </div>
+                </div>
+                    <br>
+                     <select ng-model='discussionsSelect' class='form-control'>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                        <option value='3'>3</option>
+                        <option value='4'>4</option>
+                        <option value='5'>5</option>
+                      </select>
+                    <textarea class="form-control" placeholder="write a comment..." rows="3"></textarea>
+                    <br>
+                    <button type="button" class="btn btn-info pull-right">Leave a review</button>
+                    <div class="clearfix"></div>
+                    <hr>
+                <div class="row">
+                 <div class="col-md-12">
+                    <div class="col-md-2">
+                         <p class="text-secondary text-center">15 Minutes Ago</p>
+                        <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-thumbnail"/>
+                    </div>
+                    <div class="col-md-10">
+                        <p>
+                            <strong>Maniruzzaman Akash</strong>
+                            <span class="pull-right"><i class="glyphicon glyphicon-star"></i></span>
+                            <span class="pull-right"><i class="glyphicon glyphicon-star"></i></span>
+                            <span class="pull-right"><i class="glyphicon glyphicon-star"></i></span>
+                            <span class="pull-right"><i class="glyphicon glyphicon-star"></i></span>
+                            <span class="pull-right"><i class="glyphicon glyphicon-empty"></i></span>
+                       </p>
+                       <div class="clearfix"></div>
+                        <p>Lorem Ipsum is simply dummy text of the pr make  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    </div>
+                </div>
+                </div>
+                    <hr>
+                    <div class="row">
+               <div class="col-md-12">
+                    <div class="col-md-2">
+                         <p class="text-secondary text-center">15 Minutes Ago</p>
+                        <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-thumbnail"/>
+                    </div>
+                    <div class="col-md-10">
+                        <p>
+                            <strong>Maniruzzaman Akash</strong>
+                            <span class="pull-right"><i class="glyphicon glyphicon-star"></i></span>
+                            <span class="pull-right"><i class="glyphicon glyphicon-star"></i></span>
+                            <span class="pull-right"><i class="glyphicon glyphicon-star"></i></span>
+                            <span class="pull-right"><i class="glyphicon glyphicon-star"></i></span>
+                            <span class="pull-right"><i class="glyphicon glyphicon-star-half"></i></span>
+                       </p>
+                       <div class="clearfix"></div>
+                        <p>Lorem Ipsum is simply dummy text of the pr make  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    </div>
+                </div>
+                    </div>
+
+            </div>
+
+
+    </div>
+</div>
+</div>
+
+
+{% endblock %}

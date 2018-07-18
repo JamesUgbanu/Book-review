@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block title %}Homepage{% endblock %}
+
+{% block body %}
+  <form class="search-form" action="{{ url_for('index') }}" method="post">
+    <input type="text" name="search" class="search" placeholder="Search by ISBN, Author or Name of Book">
+    <ul class="suggestions">
+      <li>Filter for a Book</li>
+         {% for book in books %}
+             <li><a href="/books/{{ book.isbn }}">{{ book.title }}  by  {{ book.author }}</a></li>
+         {% else %}
+            <li>No record.</li>
+        {% endfor %}
+    </ul>
+  </form>
+{% endblock %}
