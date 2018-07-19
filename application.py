@@ -64,6 +64,19 @@ def book_api(search_term):
     return jsonify(items)
     #return render_template("book.html", books=books)
 
+@app.route("/submit", methods=["POST"])
+def submit():
+
+    firstname = request.form.get("firstname")
+    lastname = request.form.get("lastname")
+    email = request.form.get("email")
+    password = request.form.get("password")
+
+    db.execute("INSERT INTO users (firstname, lastname, email, password) VALUES (:firstname, :lastname, :email, :password)",
+                       {"firstname": firstname, "lastname": lastname, "email": email, "password": password})
+    db.commit()
+    return render_template("success.html", firstname=firstname)
+
 @app.route("/register")
 def register():
     return render_template("registration.html")
