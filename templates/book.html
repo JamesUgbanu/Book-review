@@ -38,59 +38,45 @@
                     </div>
                 </div>
                     <br>
-                     <select ng-model='discussionsSelect' class='form-control'>
+                    <form action="{{ url_for('comment') }}" method="post">
+                     <select ng-model='discussionsSelect' name="rating_id" class='form-control'>
                         <option value='1'>1</option>
                         <option value='2'>2</option>
                         <option value='3'>3</option>
                         <option value='4'>4</option>
                         <option value='5'>5</option>
                       </select>
-                    <textarea class="form-control" placeholder="write a comment..." rows="3"></textarea>
+                    <textarea name="desc" class="form-control" placeholder="write a comment..." rows="3"></textarea>
                     <br>
-                    <button type="button" class="btn btn-info pull-right">Leave a review</button>
+                    <input type="hidden" id="custId" name="book_id" value="{{ book.id }}">
+                    <button class="btn btn-info pull-right">Leave a review</button>
+                     </form>
                     <div class="clearfix"></div>
                     <hr>
-                <div class="row">
-                 <div class="col-md-12">
-                    <div class="col-md-2">
-                         <p class="text-secondary text-center">15 Minutes Ago</p>
-                        <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-thumbnail"/>
-                    </div>
-                    <div class="col-md-10">
-                        <p>
-                            <strong>Maniruzzaman Akash</strong>
-                            <span class="pull-right"><i class="glyphicon glyphicon-star"></i></span>
-                            <span class="pull-right"><i class="glyphicon glyphicon-star"></i></span>
-                            <span class="pull-right"><i class="glyphicon glyphicon-star"></i></span>
-                            <span class="pull-right"><i class="glyphicon glyphicon-star"></i></span>
-                            <span class="pull-right"><i class="glyphicon glyphicon-empty"></i></span>
-                       </p>
-                       <div class="clearfix"></div>
-                        <p>Lorem Ipsum is simply dummy text of the pr make  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    </div>
-                </div>
-                </div>
-                    <hr>
-                    <div class="row">
-               <div class="col-md-12">
-                    <div class="col-md-2">
-                         <p class="text-secondary text-center">15 Minutes Ago</p>
-                        <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-thumbnail"/>
-                    </div>
-                    <div class="col-md-10">
-                        <p>
-                            <strong>Maniruzzaman Akash</strong>
-                            <span class="pull-right"><i class="glyphicon glyphicon-star"></i></span>
-                            <span class="pull-right"><i class="glyphicon glyphicon-star"></i></span>
-                            <span class="pull-right"><i class="glyphicon glyphicon-star"></i></span>
-                            <span class="pull-right"><i class="glyphicon glyphicon-star"></i></span>
-                            <span class="pull-right"><i class="glyphicon glyphicon-star-half"></i></span>
-                       </p>
-                       <div class="clearfix"></div>
-                        <p>Lorem Ipsum is simply dummy text of the pr make  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    </div>
-                </div>
-                    </div>
+
+                    {% for comment in comments %}
+                            <div class="row">
+                             <div class="col-md-12">
+                                <div class="col-md-2">
+                                     <p class="text-secondary text-center">15 Minutes Ago</p>
+                                    <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-thumbnail"/>
+                                </div>
+                                <div class="col-md-10">
+                                    <p>
+                                        <strong>{{ comment.firstname }}</strong>
+                                        {% for i in range(comment.rating) %}
+                                        <span class="pull-right"><i class="glyphicon glyphicon-star"></i></span>
+                                        {% endfor %}
+                                   </p>
+                                   <div class="clearfix"></div>
+                                    <p>{{ comment.comment }}</p>
+                                </div>
+                            </div>
+                            </div>
+                                <hr>
+                        {% else %}
+                            <p>No Review</p>
+                    {% endfor %}
 
             </div>
 

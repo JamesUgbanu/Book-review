@@ -9,7 +9,7 @@
          {% for book in books %}
              <li><a href="/books/{{ book.isbn }}">{{ book.title }}  by  {{ book.author }}</a></li>
          {% else %}
-            <li>No record.</li>
+            <li>{{ record }}</li>
         {% endfor %}
     </ul>
   </form>
